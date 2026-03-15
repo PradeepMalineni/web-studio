@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_images.py — Phase 3 of /recreate-website
+generate_images.py  -  Phase 3 of /launch-website
 
 Generates images via Kie AI (flux-kontext-pro model), polls for completion,
 then uploads each result to imgbb for permanent hosting.
@@ -20,12 +20,12 @@ Input JSON format (list of image tasks):
     ]
 
 Environment variables required:
-    KIE_AI_API_KEY   — from https://kie.ai
-    IMGBB_API_KEY    — from https://api.imgbb.com
+    KIE_AI_API_KEY    -  from https://kie.ai
+    IMGBB_API_KEY     -  from https://api.imgbb.com
 
 Output:
-    <output_dir>/assets/images/manifest.json   — updated with imgbb URLs
-    <output_dir>/assets/images/pending-generation.md  — failed prompts
+    <output_dir>/assets/images/manifest.json    -  updated with imgbb URLs
+    <output_dir>/assets/images/pending-generation.md   -  failed prompts
 """
 
 import sys
@@ -39,9 +39,9 @@ import urllib.error
 from pathlib import Path
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Config
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 KIE_API_BASE = "https://api.kie.ai/api/v1"
 KIE_POLL_INTERVAL = 5   # seconds between polls
@@ -64,9 +64,9 @@ ASPECT_RATIO_MAP = {
 IMGBB_API_BASE = "https://api.imgbb.com/1/upload"
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Kie AI
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def kie_generate(prompt: str, aspect_ratio: str, api_key: str) -> str:
     """
@@ -117,11 +117,11 @@ def kie_poll(task_id: str, api_key: str) -> str:
             data = json.loads(resp.read())
 
         status = data.get("data", {}).get("status", "")
-        print(f"  [kie] Poll {attempt + 1}/{KIE_MAX_POLLS} — status: {status}")
+        print(f"  [kie] Poll {attempt + 1}/{KIE_MAX_POLLS}  -  status: {status}")
 
         if status == "completed":
             image_url = data["data"]["output"][0]["url"]
-            print(f"  [kie] Complete → {image_url}")
+            print(f"  [kie] Complete -> {image_url}")
             return image_url
 
         if status in ("failed", "error"):
@@ -130,9 +130,9 @@ def kie_poll(task_id: str, api_key: str) -> str:
     raise TimeoutError(f"Kie AI task {task_id} did not complete after {KIE_MAX_POLLS} polls")
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # imgbb uploader
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def imgbb_upload_from_url(image_url: str, name: str, api_key: str) -> str:
     """
@@ -162,13 +162,13 @@ def imgbb_upload_from_url(image_url: str, name: str, api_key: str) -> str:
         raise RuntimeError(f"imgbb upload failed: {result}")
 
     permanent_url = result["data"]["url"]
-    print(f"  [imgbb] Permanent URL → {permanent_url}")
+    print(f"  [imgbb] Permanent URL -> {permanent_url}")
     return permanent_url
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Gradient placeholder
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def css_gradient_placeholder(purpose: str, colors: list[str] | None = None) -> str:
     """Generate a CSS gradient that can stand in for a failed image."""
@@ -187,9 +187,9 @@ def css_gradient_placeholder(purpose: str, colors: list[str] | None = None) -> s
     return f"background: {grad_type}(135deg, {stops}); width: 100%; height: 100%;"
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Main
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def generate_all(tasks_file: str, output_dir: str):
     kie_key = os.environ.get("KIE_AI_API_KEY", "")
@@ -255,7 +255,7 @@ def generate_all(tasks_file: str, output_dir: str):
     # Save manifest
     manifest_path = out_images / "manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
-    print(f"\n[generate_images] Manifest saved → {manifest_path}")
+    print(f"\n[generate_images] Manifest saved -> {manifest_path}")
 
     # Save pending
     if pending:
@@ -267,15 +267,15 @@ def generate_all(tasks_file: str, output_dir: str):
             lines.append(f"**Prompt:**\n```\n{p['prompt']}\n```\n\n")
         pending_path = out_images / "pending-generation.md"
         pending_path.write_text("".join(lines))
-        print(f"[generate_images] Pending prompts → {pending_path}")
+        print(f"[generate_images] Pending prompts -> {pending_path}")
 
     # Summary
     generated = sum(1 for m in manifest if m["status"] == "generated")
     failed = len(manifest) - generated
-    print(f"\n── Image Generation Summary ──────────────────────────")
-    print(f"  ✅ Generated: {generated}")
-    print(f"  ❌ Failed:    {failed}")
-    print(f"──────────────────────────────────────────────────────\n")
+    print(f"\n-- Image Generation Summary --------------------------")
+    print(f"  [ok] Generated: {generated}")
+    print(f"  [x] Failed:    {failed}")
+    print(f"------------------------------------------------------\n")
 
 
 if __name__ == "__main__":

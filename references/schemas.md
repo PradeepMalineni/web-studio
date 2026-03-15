@@ -1,6 +1,6 @@
 # Data Schemas
 
-Reference for all JSON structures used by the `/recreate-website` skill.
+Reference for all JSON structures used by the `/launch-website` skill.
 
 ---
 

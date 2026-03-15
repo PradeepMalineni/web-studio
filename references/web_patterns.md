@@ -1,6 +1,6 @@
 # Web Design Patterns Reference
 
-Best practices for the `/recreate-website` skill — Phase 4 (Rebuild) and Phase 6 (Competitive Improvements).
+Best practices for the `/launch-website` skill  -  Phase 4 (Build) and Phase 6 (Competitive Improvements).
 
 ---
 
@@ -9,23 +9,23 @@ Best practices for the `/recreate-website` skill — Phase 4 (Rebuild) and Phase
 ### Benefit-led headlines (preferred)
 Convert feature descriptions into outcome statements:
 
-| ❌ Feature-led | ✅ Benefit-led |
+| [x] Feature-led | [ok] Benefit-led |
 |---|---|
-| "AI-powered writing tool" | "Write 10× faster with AI that knows your voice" |
+| "AI-powered writing tool" | "Write 10x faster with AI that knows your voice" |
 | "Project management software" | "Ship projects on time, every time" |
-| "Analytics dashboard" | "See exactly why users drop off — fix it in hours" |
+| "Analytics dashboard" | "See exactly why users drop off  -  fix it in hours" |
 
 ### Hero structures that convert
-1. **Eyebrow + H1 + subtitle + dual CTA + hero image** — most common SaaS pattern
-2. **H1 + animated word swap + CTA** — tech/startup
-3. **Split layout: copy left, product right** — product-led companies
-4. **Full-bleed video background + centered copy** — lifestyle/brand
+1. **Eyebrow + H1 + subtitle + dual CTA + hero image**  -  most common SaaS pattern
+2. **H1 + animated word swap + CTA**  -  tech/startup
+3. **Split layout: copy left, product right**  -  product-led companies
+4. **Full-bleed video background + centered copy**  -  lifestyle/brand
 
 ### CTA copy formulas
-- "Start [benefit] free" → "Start shipping faster free"
-- "Get [product] free" → standard, high conversion
-- "Try [product] for [time]" → reduces commitment fear
-- "See [product] in action" → for demo-first products
+- "Start [benefit] free" -> "Start shipping faster free"
+- "Get [product] free" -> standard, high conversion
+- "Try [product] for [time]" -> reduces commitment fear
+- "See [product] in action" -> for demo-first products
 - Avoid: "Learn more", "Click here", "Submit"
 
 ---
@@ -34,7 +34,7 @@ Convert feature descriptions into outcome statements:
 
 1. Nav (sticky)
 2. Hero (H1 + primary CTA + hero image)
-3. Social proof logos ("Trusted by X companies") — immediately after hero
+3. Social proof logos ("Trusted by X companies")  -  immediately after hero
 4. Features / how it works
 5. Testimonials / case studies
 6. Pricing (if applicable)
@@ -52,9 +52,9 @@ Convert feature descriptions into outcome statements:
 - **Bottom of funnel (near CTA):** Money-back guarantee, free trial, no credit card required
 
 ### Logo clouds
-- Show 5–8 recognizable brand logos
+- Show 5-8 recognizable brand logos
 - Grayscale by default, colorize on hover
-- Label: "Trusted by teams at…" or "Used by 10,000+ companies"
+- Label: "Trusted by teams at..." or "Used by 10,000+ companies"
 
 ---
 
@@ -123,13 +123,13 @@ Otherwise, CSS transitions + Intersection Observer is sufficient and lighter.
 
 ## Accessibility Checklist
 
-- `<nav aria-label="Main navigation">` — distinguish multiple navs
+- `<nav aria-label="Main navigation">`  -  distinguish multiple navs
 - `<main>` wrapping the primary content
 - `<section aria-labelledby="section-id">` for each section
-- `<img alt="...">` — descriptive, not "image of..."
+- `<img alt="...">`  -  descriptive, not "image of..."
 - Buttons have visible focus states: `:focus-visible { outline: 2px solid var(--color-primary); }`
 - Color contrast: AA minimum 4.5:1 for body text, 3:1 for large text
-- Mobile tap targets: minimum 44×44px
+- Mobile tap targets: minimum 44x44px
 - Skip link: `<a class="sr-only" href="#main">Skip to content</a>`
 
 ---
@@ -137,10 +137,10 @@ Otherwise, CSS transitions + Intersection Observer is sufficient and lighter.
 ## Color Usage Guidelines
 
 ### Hierarchy
-- **Primary color** — main CTAs, active states, key highlights (use sparingly)
-- **Secondary color** — eyebrow labels, badges, secondary accents
-- **Neutral scale** — text (dark), borders (light), backgrounds (near-white)
-- **Semantic** — success (#22c55e), warning (#f59e0b), error (#ef4444)
+- **Primary color**  -  main CTAs, active states, key highlights (use sparingly)
+- **Secondary color**  -  eyebrow labels, badges, secondary accents
+- **Neutral scale**  -  text (dark), borders (light), backgrounds (near-white)
+- **Semantic**  -  success (#22c55e), warning (#f59e0b), error (#ef4444)
 
 ### Dark mode readiness
 Use CSS custom properties for all color values so dark mode can be added later:
@@ -156,15 +156,15 @@ Use CSS custom properties for all color values so dark mode can be added later:
 ## Pricing Section Patterns
 
 ### Most common SaaS pricing layouts
-1. **3-column (Free / Pro / Enterprise)** — standard
-2. **Toggle monthly/annual** — increases perceived value of annual
-3. **Usage-based calculator** — for API/volume pricing
-4. **"Contact us" for Enterprise** — avoids anchoring high numbers
+1. **3-column (Free / Pro / Enterprise)**  -  standard
+2. **Toggle monthly/annual**  -  increases perceived value of annual
+3. **Usage-based calculator**  -  for API/volume pricing
+4. **"Contact us" for Enterprise**  -  avoids anchoring high numbers
 
 ### Pricing card anatomy
 - Plan name + eyebrow label (e.g., "Most popular")
 - Price + billing period
-- Feature list with checkmarks (5–8 items)
+- Feature list with checkmarks (5-8 items)
 - CTA button
 - Social proof underneath ("Join 2,000+ teams on Pro")
 
@@ -191,13 +191,13 @@ details + details { border-top: 1px solid var(--color-border); }
 ## Image Prompt Writing Guide (for Kie AI)
 
 Strong prompts include:
-1. **Subject** — what the image shows
-2. **Style** — photo, illustration, 3D render, flat icon
-3. **Mood/tone** — professional, warm, energetic, minimal
-4. **Color** — tie to brand palette (e.g., "purple accent tones")
-5. **Composition** — wide shot, portrait, isometric, close-up
-6. **Quality markers** — "photorealistic", "4K", "high-resolution", "sharp details"
-7. **Lighting** — soft natural, studio, golden hour
+1. **Subject**  -  what the image shows
+2. **Style**  -  photo, illustration, 3D render, flat icon
+3. **Mood/tone**  -  professional, warm, energetic, minimal
+4. **Color**  -  tie to brand palette (e.g., "purple accent tones")
+5. **Composition**  -  wide shot, portrait, isometric, close-up
+6. **Quality markers**  -  "photorealistic", "4K", "high-resolution", "sharp details"
+7. **Lighting**  -  soft natural, studio, golden hour
 
 **Examples:**
 ```

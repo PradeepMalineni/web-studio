@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-upload_imgbb.py — Standalone imgbb uploader
+upload_imgbb.py  -  Standalone imgbb uploader
 
 Upload a local file or a remote URL to imgbb for permanent hosting.
 
@@ -8,7 +8,7 @@ Usage:
     python upload_imgbb.py <file_path_or_url> [--name <name>]
 
 Environment:
-    IMGBB_API_KEY — required
+    IMGBB_API_KEY  -  required
 
 Outputs the permanent imgbb URL to stdout.
 """

@@ -1,7 +1,7 @@
 [
   {
     "id": "hero-main",
-    "prompt": "REPLACE: Describe the hero image — subject, style, mood, colors, composition, quality level",
+    "prompt": "REPLACE: Describe the hero image  -  subject, style, mood, colors, composition, quality level",
     "aspect_ratio": "16:9",
     "purpose": "hero"
   },

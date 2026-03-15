@@ -1,30 +1,30 @@
 ---
-name: ui-ux-designer
+name: web-studio
 description: >
   Recreates, redesigns, and improves websites from scratch using modern web technologies.
   Use this skill whenever the user wants to: clone or recreate an existing website, rebuild
   a site with improved UX/UI, analyze and improve web design, regenerate site images with AI,
   perform competitive web analysis, or produce production-ready HTML/CSS/JS. Trigger on
-  /recreate-website, "clone this site", "rebuild my website", "recreate this URL",
+  /launch-website, "clone this site", "rebuild my website", "transform this URL",
   "improve this site's design", or any request involving taking an existing site and
   producing a better version of it.
 ---
 
-# UI/UX Designer — `/recreate-website`
+# Web Studio  -  `/launch-website`
 
 ## Overview
 
 Recreates an entire website from scratch using modern web technologies, improves it with competitive research, generates AI images via Kie AI, hosts them on imgbb, and delivers production-ready code.
 
-**Important:** Do NOT copy the site as-is. Recreate the structure and content with meaningful improvements — better design, stronger copy, superior UX patterns.
+**Important:** Do NOT copy the site as-is. Recreate the structure and content with meaningful improvements  -  better design, stronger copy, superior UX patterns.
 
 ## Usage
 
 ```
-/recreate-website <URL or path/to/file.html> [output-dir]
+/launch-website <URL or path/to/file.html> [output-dir]
 ```
 
-- No arg provided → ask the user for a URL or HTML file path
+- No arg provided -> ask the user for a URL or HTML file path
 - Output dir defaults to `./recreated-site`
 
 ## Prerequisites
@@ -44,15 +44,15 @@ If either is missing, inform the user and ask them to set the variable(s) before
 
 ---
 
-## Execution — 7 Phases
+## Execution  -  7 Phases
 
 Work through each phase in order. Use `scripts/` helpers where noted. Update the user on progress between phases.
 
 ---
 
-### Phase 1 — Analyze the Source Website
+### Phase 1  -  Analyze the Source Website
 
-**Goal:** Deeply understand what the site is doing so you can recreate and improve it.
+**Goal:** Deeply understand what the site is doing so you can transform and improve it.
 
 Use `scripts/analyze_site.py` to fetch and parse. If it fails (JS-heavy SPA, paywalled, login-gated), ask the user to provide an HTML export.
 
@@ -62,14 +62,14 @@ Extract and document:
 2. **Visual design**: exact hex color palette (use a color extractor), typography (font families, sizes, weights, line heights), spacing rhythm, shadow depths, border radii, glassmorphism/gradient usage
 3. **Animations**: scroll reveals, hover states, sticky nav behavior, carousels, modals, GSAP/AOS detection
 4. **Images**: every image with URL, inferred dimensions, purpose (hero, avatar, icon, background), visual style (photo, illustration, icon), aspect ratio
-5. **Content**: all headings (H1–H4), body copy, CTAs (text + placement), forms (fields, labels), nav structure, footer links
+5. **Content**: all headings (H1-H4), body copy, CTAs (text + placement), forms (fields, labels), nav structure, footer links
 6. **Sub-pages**: crawl up to 5 pages linked from the main navigation
 
 Save findings to `<output-dir>/analysis/site_analysis.json` using the schema in `references/schemas.md`.
 
 ---
 
-### Phase 2 — Plan the Tech Stack
+### Phase 2  -  Plan the Tech Stack
 
 Choose based on complexity observed in Phase 1:
 
@@ -80,11 +80,11 @@ Choose based on complexity observed in Phase 1:
 | Minimal animation | CSS transitions + Intersection Observer API |
 | Complex animation timelines | GSAP (CDN) |
 
-Document the rationale in `README.md`. Prefer CDN over build tooling unless React is genuinely warranted — keep it simple and dependency-light.
+Document the rationale in `README.md`. Prefer CDN over build tooling unless React is genuinely warranted  -  keep it simple and dependency-light.
 
 ---
 
-### Phase 3 — Regenerate Images with Kie AI + imgbb
+### Phase 3  -  Regenerate Images with Kie AI + imgbb
 
 Use `scripts/generate_images.py`. For every image identified in Phase 1:
 
@@ -108,22 +108,22 @@ Use `scripts/generate_images.py`. For every image identified in Phase 1:
 
 ---
 
-### Phase 4 — Rebuild the Website
+### Phase 4  -  Build the Website
 
 Output structure:
 
 ```
 <output-dir>/
-├── index.html
-├── assets/
-│   ├── css/styles.css
-│   ├── js/main.js
-│   └── images/
-│       ├── manifest.json
-│       └── pending-generation.md
-├── pages/
-│   └── (additional pages if crawled)
-└── README.md
++-- index.html
++-- assets/
+|   +-- css/styles.css
+|   +-- js/main.js
+|   \-- images/
+|       +-- manifest.json
+|       \-- pending-generation.md
++-- pages/
+|   \-- (additional pages if crawled)
+\-- README.md
 ```
 
 **Code standards:**
@@ -132,14 +132,14 @@ Output structure:
 - Mobile-first responsive with breakpoints: 640px / 768px / 1024px / 1280px
 - All animations respect `prefers-reduced-motion: reduce`
 - Vanilla JS for interactions; GSAP only for complex multi-step timelines
-- No Lorem Ipsum — use actual content, improved where noted in Phase 6
-- Minimal external dependencies — CDN only
+- No placeholder text  -  use actual content, improved where noted in Phase 6
+- Minimal external dependencies  -  CDN only
 
 Build section by section. Start with the full HTML skeleton, then fill in CSS, then JS. Write the complete file; don't truncate.
 
 ---
 
-### Phase 5 — Competitive Research
+### Phase 5  -  Competitive Research
 
 Use `scripts/competitive_research.py`.
 
@@ -159,11 +159,11 @@ Format:
 
 ---
 
-### Phase 6 — Apply Competitive Improvements
+### Phase 6  -  Apply Competitive Improvements
 
 Use insights from Phase 5 to upgrade the recreated site. Document every change:
 
-> **Change:** Rewrote hero headline from "Welcome to X" → "Get Y in Z minutes"
+> **Change:** Rewrote hero headline from "Welcome to X" -> "Get Y in Z minutes"
 > **Why:** 4 of 5 competitors lead with a specific benefit/outcome; this outperforms vague brand welcomes
 
 Apply improvements in these areas (only where the research justifies it):
@@ -173,18 +173,18 @@ Apply improvements in these areas (only where the research justifies it):
 - **CTA placement**: add above-fold CTA if competitors do; move secondary CTAs per patterns
 - **Trust signals**: add testimonials, star ratings, client logos, certifications if 3+ competitors use them
 - **Layout/whitespace**: apply superior spacing rhythm or section ordering if observed
-- **Missing proven sections**: add "How it works", comparison table, FAQ, social proof — only if research shows it's standard in this industry
+- **Missing proven sections**: add "How it works", comparison table, FAQ, social proof  -  only if research shows it's standard in this industry
 
-**Key constraint:** Preserve the original brand identity (name, color palette, logo style). Only improve — don't rebrand.
+**Key constraint:** Preserve the original brand identity (name, color palette, logo style). Only improve  -  don't rebrand.
 
 ---
 
-### Phase 7 — Final Output
+### Phase 7  -  Final Output
 
 Ensure all files are written. Then generate `README.md`:
 
 ```markdown
-# [Site Name] — Recreated
+# [Site Name]  -  Recreated
 
 ## Overview
 [1-paragraph description of what the site does and what was recreated]
@@ -209,17 +209,17 @@ Ensure all files are written. Then generate `README.md`:
 ```
 
 Print a summary to the user:
-- ✅ Images generated: N / Total
-- 🔍 Competitors analyzed: N
-- ✨ Top improvements applied
-- ⚠️ Manual steps needed (if any)
+- [ok] Images generated: N / Total
+- [search] Competitors analyzed: N
+- [*] Top improvements applied
+- [!] Manual steps needed (if any)
 
 ---
 
 ## Key Constraints
 
 - **Do not copy verbatim.** Recreate structure and content; rewrite copy to be better.
-- **No Lorem Ipsum.** Every piece of text should be real or improved content.
+- **No placeholder text.** Every piece of text must be real or meaningfully improved.
 - **Preserve brand identity.** Colors, name, logo style are untouched. Improve everything else.
 - **Minimal deps.** CDN > npm install unless React is genuinely warranted.
 - **imgbb = permanent.** Kie AI result URLs expire after 14 days; always upload to imgbb.

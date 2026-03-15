@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-analyze_site.py — Phase 1 of /recreate-website
+analyze_site.py  -  Phase 1 of /launch-website
 
 Fetches a URL or reads a local HTML file, extracts structure, design tokens,
 content, images, and animations. Saves a JSON analysis to the output directory.
@@ -23,9 +23,9 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # HTML Parser
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 class SiteParser(HTMLParser):
     """Lightweight HTML parser that collects structure and content signals."""
@@ -166,9 +166,9 @@ class SiteParser(HTMLParser):
         return "content"
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # CSS / Style-sheet analyzer
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def extract_from_css(css_text: str) -> dict:
     """Extract colors, fonts, breakpoints, and animation hints from CSS."""
@@ -214,9 +214,9 @@ def extract_from_css(css_text: str) -> dict:
     return result
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Fetcher
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def fetch_html(source: str) -> tuple[str, str]:
     """
@@ -276,9 +276,9 @@ def crawl_subpages(base_url: str, links: list[str], max_pages: int = 5) -> list[
     return pages
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Library / framework detection
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def detect_libraries(html: str) -> list[str]:
     detected = []
@@ -301,9 +301,9 @@ def detect_libraries(html: str) -> list[str]:
     return detected
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Section detector
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def detect_sections(html: str) -> list[str]:
     """Identify common page section types from HTML patterns."""
@@ -329,9 +329,9 @@ def detect_sections(html: str) -> list[str]:
     return sections
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Main
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 
 def analyze(source: str, output_dir: str):
     print(f"[analyze_site] Fetching: {source}")
@@ -392,10 +392,10 @@ def analyze(source: str, output_dir: str):
     out_path = Path(output_dir) / "analysis" / "site_analysis.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(analysis, indent=2, ensure_ascii=False))
-    print(f"[analyze_site] Saved analysis → {out_path}")
+    print(f"[analyze_site] Saved analysis -> {out_path}")
 
     # Print summary
-    print(f"\n── Analysis Summary ──────────────────────────────────")
+    print(f"\n-- Analysis Summary ----------------------------------")
     print(f"  Sections:    {', '.join(sections) or 'none detected'}")
     print(f"  Libraries:   {', '.join(libraries) or 'none detected'}")
     print(f"  Colors:      {len(all_colors)} extracted")
@@ -404,7 +404,7 @@ def analyze(source: str, output_dir: str):
     print(f"  Headings:    {len(parser.headings)}")
     print(f"  Breakpoints: {css_analysis['breakpoints']}")
     print(f"  Sub-pages:   {len(subpages)}")
-    print(f"──────────────────────────────────────────────────────\n")
+    print(f"------------------------------------------------------\n")
 
     return analysis
 
