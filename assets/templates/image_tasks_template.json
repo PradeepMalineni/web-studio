@@ -1,0 +1,32 @@
+[
+  {
+    "id": "hero-main",
+    "prompt": "REPLACE: Describe the hero image — subject, style, mood, colors, composition, quality level",
+    "aspect_ratio": "16:9",
+    "purpose": "hero"
+  },
+  {
+    "id": "feature-1",
+    "prompt": "REPLACE: Feature illustration or photo description",
+    "aspect_ratio": "3:4",
+    "purpose": "feature"
+  },
+  {
+    "id": "feature-2",
+    "prompt": "REPLACE: Second feature image",
+    "aspect_ratio": "3:4",
+    "purpose": "feature"
+  },
+  {
+    "id": "avatar-testimonial-1",
+    "prompt": "Professional headshot, confident person, business casual attire, neutral studio background, warm smile, photorealistic, sharp focus",
+    "aspect_ratio": "1:1",
+    "purpose": "avatar"
+  },
+  {
+    "id": "avatar-testimonial-2",
+    "prompt": "Professional headshot, confident person, business casual attire, neutral studio background, warm smile, photorealistic, sharp focus",
+    "aspect_ratio": "1:1",
+    "purpose": "avatar"
+  }
+]

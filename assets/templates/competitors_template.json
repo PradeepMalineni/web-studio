@@ -1,0 +1,22 @@
+{
+  "industry": "REPLACE: e.g. SaaS / Project Management",
+  "site_name": "REPLACE: name of the site being recreated",
+  "competitors": [
+    {
+      "name": "Competitor Name",
+      "url": "https://competitor.com",
+      "headline": "Their H1 hero headline",
+      "cta_primary": "Primary button text",
+      "cta_secondary": "Secondary button text or null",
+      "trust_signals": [
+        "e.g. 50,000+ users",
+        "e.g. 4.9 stars on G2",
+        "e.g. SOC 2 certified"
+      ],
+      "design_style": "minimalist | bold | corporate | playful | dark | light | gradient",
+      "sections": ["hero", "features", "pricing", "testimonials", "faq", "footer"],
+      "unique_angle": "One sentence: what makes them stand out",
+      "notes": "Any additional observations about UX, messaging, or design"
+    }
+  ]
+}
